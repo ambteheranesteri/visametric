@@ -99,9 +99,10 @@
 <div class="captcha-group" style="margin-bottom: 15px;">
     <div class="captcha-image" id="captcha-code"
          style="width: 120px; padding: 6px 10px; font-size: 18px; border: 1px dashed #aaa; text-align: center; display: inline-block; margin-bottom: 10px;">
-        742734
+        <!-- کپچا به صورت داینامیک قرار می‌گیرد -->
     </div>
     <input type="text" id="captcha-input"
+           placeholder="Enter the code"
            style="width: 180px; padding: 6px; font-size: 14px; border-radius: 4px; border: 1px solid #ccc;">
 </div>
 
@@ -115,13 +116,16 @@ function generateCaptcha(length = 6) {
     return captcha;
 }
 
-// تغییر خودکار کپچا هر 5 ثانیه
-setInterval(function() {
+// تابع برای به‌روزرسانی کپچا
+function updateCaptcha() {
     document.getElementById('captcha-code').innerText = generateCaptcha();
-}, 5000);
+}
 
-// مقدار اولیه کپچا
-document.getElementById('captcha-code').innerText = generateCaptcha();
+// اجرای فوری هنگام لود صفحه (در صورت رفرش)
+updateCaptcha();
+
+// تغییر خودکار کپچا هر 60 ثانیه
+setInterval(updateCaptcha, 60000);
 </script>
 
 
@@ -172,6 +176,7 @@ document.getElementById('captcha-code').innerText = generateCaptcha();
     <script src="script.js"></script> 
 </body>
 </html>
+
 
 
 
