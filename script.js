@@ -1,54 +1,67 @@
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+/* ======================================================= */
+/* === SCRIPT.JS: Logic for Barcode and Button Toggling === */
+/* ======================================================= */
 
-// --- تنظیمات Supabase ---
-const supabaseUrl = 'https://YOUR_PROJECT_ID.supabase.co'
-const supabaseKey = 'YOUR_ANON_KEY'
-const supabase = createClient(supabaseUrl, supabaseKey)
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. شبیه سازی داده‌های نظرسنجی شده (از data.json)
+    const MOCK_DATA = {
+        // اینها بارکدهای صحیح و مورد تأیید هستند
+        valid_barcodes: [
+            "12345678",
+            "87654321",
+            "99887766",
+            "74273411" 
+        ],
+        // لینک هدایت در صورت موفقیت
+        redirect_link: "https://visametric-iran.com/application-status/details"
+    };
 
-// --- عناصر DOM ---
-const loginForm = document.getElementById('login-form')
-const ceuInput = document.getElementById('ceu-number')
-const idInput = document.getElementById('national-id')
-const loginError = document.getElementById('login-error')
-const dashboard = document.getElementById('dashboard-layout')
-const loginPage = document.getElementById('login-page')
-const applicantNameEl = document.getElementById('applicant-name')
-const applicantCeuEl = document.getElementById('applicant-ceu')
-const logoutBtn = document.getElementById('logout-btn')
+    // 2. انتخاب المان‌های مورد نیاز با استفاده از ID
+    const trackingForm = document.getElementById('tracking-form');
+    const barcodeInput = document.getElementById('barcode');
+    // const captchaInput = document.getElementById('captcha-input'); // دیگر نیازی به این نیست
+    const searchButton = document.getElementById('search-button');
+    // const captchaCodeElement = document.getElementById('captcha-code'); // دیگر نیازی به این نیست
+    const barcodeError = document.getElementById('barcode-error');
 
-// --- Login ---
-loginForm.addEventListener('submit', async (e) => {
-    e.preventDefault()
-    loginError.classList.add('hidden')
+    // 3. تابع اصلی برای به‌روزرسانی وضعیت دکمه جستجو
+    const updateSearchButtonState = () => {
+        const barcodeValue = barcodeInput.value.trim();
+        
+        const isBarcodeValidFormat = barcodeValue.length === 8;
+        const isBarcodeInDatabase = MOCK_DATA.valid_barcodes.includes(barcodeValue);
+        
+        // منطق نمایش پیام خطا
+        if (isBarcodeValidFormat && !isBarcodeInDatabase) {
+            barcodeError.style.display = 'block'; // بارکد ۸ رقمی است اما معتبر نیست
+        } else {
+            barcodeError.style.display = 'none';
+        }
 
-    const ceu = ceuInput.value.trim()
-    const nationalId = idInput.value.trim()
+        // فعال‌سازی دکمه
+        // دکمه فقط در صورتی فعال می‌شود که: بارکد مطابقت داشته باشد. (بررسی کپچا حذف شد)
+        if (isBarcodeInDatabase) {
+            searchButton.disabled = false;
+            searchButton.style.backgroundColor = '#5f9087'; 
+        } else {
+            searchButton.disabled = true;
+            searchButton.style.backgroundColor = '#6c7a89'; 
+        }
+    };
 
-    if (!ceu || !nationalId) return alert('لطفا هر دو فیلد را وارد کنید.')
+    // 4. گوش دادن به تغییرات فیلد بارکد (فقط بارکد نیاز به نظارت دارد)
+    barcodeInput.addEventListener('input', updateSearchButtonState);
+    // captchaInput.addEventListener('input', updateSearchButtonState); // حذف شد
 
-    const { data, error } = await supabase
-        .from('applicants')
-        .select('*')
-        .eq('ceu_number', ceu)
-        .eq('national_id', nationalId)
-        .single()
+    // 5. مدیریت ارسال فرم برای هدایت به لینک مورد نظر
+    trackingForm.addEventListener('submit', (e) => {
+        e.preventDefault(); 
+        
+        if (!searchButton.disabled) {
+            window.location.href = MOCK_DATA.redirect_link;
+        }
+    });
 
-    if (error || !data) {
-        loginError.classList.remove('hidden')
-        return
-    }
-
-    // نمایش داشبورد
-    applicantNameEl.textContent = data.name + ' ' + data.last_name
-    applicantCeuEl.textContent = data.ceu_number
-    loginPage.classList.add('hidden')
-    dashboard.classList.remove('hidden')
-})
-
-// --- Logout ---
-logoutBtn.addEventListener('click', () => {
-    ceuInput.value = ''
-    idInput.value = ''
-    loginPage.classList.remove('hidden')
-    dashboard.classList.add('hidden')
-})
+    // اطمینان از غیرفعال بودن دکمه هنگام بارگذاری اولیه صفحه
+    updateSearchButtonState();
+});
