@@ -1,4 +1,6 @@
-/* Basic Reset and Fonts */
+/* =============================== */
+/* === Basic Reset and Fonts ===== */
+/* =============================== */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -9,7 +11,7 @@ body {
 }
 
 .container {
-    max-width: 1200px; /* Standard website width */
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
 }
@@ -19,8 +21,9 @@ a {
     color: inherit;
 }
 
-/* ================== Header Styling (tracking header.png) ================== */
-
+/* =============================== */
+/* === Header Styling ============ */
+/* =============================== */
 header {
     background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -91,14 +94,14 @@ header {
     color: #cc0000;
 }
 
-.flag-italy { color: green; } /* Placeholder colors for flags */
+.flag-italy { color: green; }
 .flag-uk { color: #cc0000; }
 
 /* Main Navigation */
 .main-nav {
     display: flex;
     justify-content: space-between;
-    background-color: #f7f7f7; /* Background color slightly above the red/gray bar */
+    background-color: #f7f7f7;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -124,15 +127,15 @@ header {
 }
 
 .red-bg {
-    background-color: #cc0000; /* Red color from image */
+    background-color: #cc0000;
 }
 
 .dark-bg {
-    background-color: #6c7a89; /* Gray/Blue color from image */
+    background-color: #6c7a89;
 }
 
 .selected {
-    border-bottom: 5px solid #cc0000; /* Red underline for selected item */
+    border-bottom: 5px solid #cc0000;
     padding-bottom: 10px;
 }
 
@@ -140,7 +143,7 @@ header {
 .search-section {
     display: flex;
     align-items: center;
-    background-color: #cc0000; /* Match background for seamless look */
+    background-color: #cc0000;
     padding-right: 25px;
 }
 
@@ -153,7 +156,7 @@ header {
 }
 
 .search-button {
-    background-color: #6c7a89; /* Gray search button */
+    background-color: #6c7a89;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -179,13 +182,14 @@ header {
     font-size: 18px;
 }
 
-/* ================== Main Content Styling (main page.png) ================== */
-
+/* =============================== */
+/* === Main Content Styling ====== */
+/* =============================== */
 .breadcrumb {
     padding: 15px 0;
     font-size: 13px;
     color: #666;
-    background-color: rgba(255, 255, 255, 0.7); /* Lighter background effect */
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .breadcrumb a {
@@ -204,7 +208,7 @@ header {
     padding-bottom: 20px;
 }
 
-/* Sidebar Menu */
+/* Sidebar */
 .sidebar {
     width: 250px;
     margin-right: 30px;
@@ -251,7 +255,7 @@ header {
 }
 
 .selected-menu-item {
-    background-color: #6c7a89; /* Gray background for selected item */
+    background-color: #6c7a89;
     color: white !important;
     font-weight: 500;
     border-radius: 4px;
@@ -324,10 +328,10 @@ header {
     letter-spacing: 2px;
     color: #4a4a4a;
     display: inline-block;
-    width: 150px; /* Sizing to match the image */
+    width: 150px;
     text-align: center;
     user-select: none;
-    font-family: 'Courier New', Courier, monospace; /* To simulate the scattered font */
+    font-family: 'Courier New', Courier, monospace;
     opacity: 0.8;
 }
 
@@ -356,9 +360,7 @@ header {
     background-color: #5a6674;
 }
 
-
-/* ================== Info Blocks Section (menu option.png) ================== */
-
+/* Info Blocks Section */
 .info-blocks {
     display: flex;
     justify-content: space-between;
@@ -425,7 +427,7 @@ header {
 }
 
 .all-news-btn {
-    background-color: #5f9087; /* Greenish button from image */
+    background-color: #5f9087;
     color: white;
     border: none;
     padding: 8px 15px;
@@ -440,13 +442,12 @@ header {
 .all-news-btn i {
     font-size: 10px;
     margin-right: 5px;
-    transform: rotate(90deg); /* Attempt to simulate the triangle icon */
+    transform: rotate(90deg);
 }
 
-/* ================== Footer Styling (footer tracking page.png) ================== */
-
+/* Footer Styling */
 footer {
-    background-color: #1e1e1e; /* Very dark background */
+    background-color: #1e1e1e;
     color: #ccc;
     padding: 20px 0;
 }
@@ -488,19 +489,7 @@ footer {
     letter-spacing: 2px;
     margin-top: -5px;
 }
-/* ================== Added Styles for Validation and Disabled Button ================== */
 
-/* استایل دکمه در حالت غیرفعال برای وضوح بیشتر */
-.search-app-btn[disabled] {
-    opacity: 0.6;
-    cursor: not-allowed;
-    background-color: #6c7a89 !important; /* مطمئن می‌شویم که خاکستری می‌ماند */
-}
-
-/* استایل Hover فقط برای دکمه‌های فعال */
-.search-app-btn:not([disabled]):hover {
-    background-color: #5f9087; /* رنگ سبزتر برای فعال شدن */
-}
 .footer-links {
     display: flex;
     gap: 100px;
@@ -541,6 +530,111 @@ footer {
 .footer-logo-initials {
     font-size: 36px;
     font-weight: 700;
-    color: #008cff; /* Bright blue color for VS initials */
+    color: #008cff;
     letter-spacing: 2px;
 }
+
+/* =============================== */
+/* === Responsive Styles ========= */
+/* =============================== */
+@media (max-width: 768px) {
+    .top-bar, .main-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 15px;
+    }
+
+    .logo-info {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 10px;
+    }
+
+    .country-settings {
+        text-align: left;
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .main-nav ul li {
+        width: 100%;
+        margin: 5px 0;
+        padding: 10px 15px;
+        text-align: left;
+    }
+
+    .search-section {
+        width: 100%;
+        margin-top: 10px;
+        justify-content: flex-start;
+    }
+
+    .search-input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .main-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-right: 0;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+
+    .content-area {
+        width: 100%;
+    }
+
+    .breadcrumb {
+        font-size: 13px;
+    }
+
+    .info-blocks {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 0;
+    }
+
+    .block, .announcements {
+        flex-basis: 100%;
+        padding-left: 0;
+        text-align: left;
+    }
+
+    .captcha-group input, .form-group input, .search-app-btn {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media (min-width: 769px) {
+    .main-layout {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .sidebar {
+        flex: 0 0 250px;
+        border-right: 1px solid #eee;
+        margin-right: 30px;
+    }
+
+    .content-area {
+        flex: 1;
+    }
+
+    .info-blocks {
+        flex-direction: row;
+        gap
