@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const MOCK_DATA = {
         // اینها بارکدهای صحیح و مورد تأیید هستند
         valid_barcodes: [
-            "12345678",
+            "ITA/IRN/2025/659349731",
             "87654321",
             "99887766",
             "74273411" 
@@ -70,3 +70,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // اطمینان از غیرفعال بودن دکمه هنگام بارگذاری اولیه صفحه
     updateSearchButtonState();
 });
+
