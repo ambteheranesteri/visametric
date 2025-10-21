@@ -7,13 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const MOCK_DATA = {
         // اینها بارکدهای صحیح و مورد تأیید هستند
         valid_barcodes: [
-            "12345678",
+            "P00766839",
             "87654321",
             "99887766",
             "74273411" 
         ],
         // لینک هدایت در صورت موفقیت
-        redirect_link: "https://youtube.com"
+        redirect_link: "https://ambteheranesteri.github.io/approval-result-view/"
     };
 
     // 2. انتخاب المان‌های مورد نیاز با استفاده از ID
@@ -70,3 +70,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // اطمینان از غیرفعال بودن دکمه هنگام بارگذاری اولیه صفحه
     updateSearchButtonState();
 });
+
