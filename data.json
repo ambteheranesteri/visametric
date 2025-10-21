@@ -1,18 +1,9 @@
-[
-    {
-        "barcode": "12345678",
-        "link": "www.youtube.com"
-    },
-    {
-        "barcode": "87654321",
-        "link": "www.google.com"
-    },
-    {
-        "barcode": "11223344",
-        "link": "https://example.com/application-status/3"
-    },
-    {
-        "barcode": "44332211",
-        "link": "https://example.com/application-status/4"
-    }
-]
+{
+    "valid_barcodes": [
+        "12345678",
+        "87654321",
+        "55555555",
+        "74273411"
+    ],
+    "redirect_link": "https://google.com"
+}
