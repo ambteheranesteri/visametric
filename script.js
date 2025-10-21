@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const MOCK_DATA = {
         // اینها بارکدهای صحیح و مورد تأیید هستند
         valid_barcodes: [
-            "659349731",
+            "12345678",
             "87654321",
             "99887766",
             "74273411" 
@@ -69,39 +69,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // اطمینان از غیرفعال بودن دکمه هنگام بارگذاری اولیه صفحه
     updateSearchButtonState();
-    <script>
-const loadingScreen = document.getElementById('loading-screen');
-const searchButton = document.getElementById('search-button');
-const mainForm = document.getElementById('tracking-form');
-
-// نمایش اولیه لودینگ 10 ثانیه هنگام باز شدن سایت
-window.addEventListener('load', function() {
-    loadingScreen.style.display = 'flex';
-    mainForm.style.display = 'none'; // مخفی کردن فرم تا پایان لودینگ
-
-    setTimeout(() => {
-        loadingScreen.style.display = 'none';
-        mainForm.style.display = 'block';
-    }, 10000); // 10 ثانیه
 });
-
-// لودینگ 5 ثانیه هنگام کلیک روی Search
-searchButton.addEventListener('click', function(e) {
-    e.preventDefault(); // جلوگیری از ارسال فرم فوری
-    loadingScreen.style.display = 'flex';
-    mainForm.style.display = 'none';
-
-    setTimeout(() => {
-        loadingScreen.style.display = 'none';
-        mainForm.style.display = 'block';
-        mainForm.submit(); // فرم ارسال شود پس از لودینگ
-    }, 5000); // 5 ثانیه
-});
-</script>
-
-});
-
-
-
-
-
