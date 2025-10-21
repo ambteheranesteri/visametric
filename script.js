@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const MOCK_DATA = {
         // اینها بارکدهای صحیح و مورد تأیید هستند
         valid_barcodes: [
-            "ITA/IRN/2025/659349731",
+            "659349731",
             "87654321",
             "99887766",
             "74273411" 
@@ -100,6 +100,7 @@ searchButton.addEventListener('click', function(e) {
 </script>
 
 });
+
 
 
 
