@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    
+
     <header>
         <div class="top-bar">
             <div class="logo-info">
@@ -70,10 +70,11 @@
             <section class="content-area">
                 <p class="tracking-intro">In order to track your application status, please enter your **Date of birth** and **Barcode number** here.</p>
                 <form class="tracking-form" id="tracking-form">
-                    <div class="form-group">
-                        <label for="dob">Date of birth (d/m/y) <i class="fas fa-question-circle"></i></label>
-                        <input type="text" id="dob" name="dob" placeholder="Optional: dd/mm/yyyy">
+                <div class="form-group">
+                     <label for="dob">Date of birth <i class="fas fa-question-circle"></i></label>
+                    <input type="text" id="dob" name="dob" placeholder="dd/mm/yyyy">
                     </div>
+
                     <div class="form-group">
                         <label for="barcode">Barcode Number (8 digits) <i class="fas fa-question-circle"></i></label>
                         <input type="text" id="barcode" name="barcode" required maxlength="8" minlength="8">
@@ -135,4 +136,3 @@
     <script src="script.js"></script> 
 </body>
 </html>
-
