@@ -3,45 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Italian Humanitarian Visa Management System</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Visa Application Tracking</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div id="loading-overlay" class="hidden">
-        <div class="loading-spinner"><img src="loading.gif" alt="Processing..."></div>
-    </div>
 
-    <main id="main-content">
-        <section id="login-page">
-            <div class="form-container">
-                <h2>SECURE APPLICANT PORTAL</h2>
-                <form id="login-form">
-                    <div class="form-group">
-                        <label for="ceu-number">CEU Number:</label>
-                        <input type="text" id="ceu-number" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="national-id">National ID Number:</label>
-                        <input type="text" id="national-id" required>
-                    </div>
-                    <div class="button-group">
-                        <button type="submit" id="login-submit-btn" class="official-button">
-                            <i class="fas fa-sign-in-alt"></i> Login
-                        </button>
-                    </div>
-                    <p id="login-error" class="error-message hidden" style="color:red;">Invalid credentials!</p>
-                </form>
+    <header>
+        <div class="top-bar">
+            <div class="logo-info">
+                <div class="logo">
+                    <span class="logo-text">V</span><span class="logo-text-small">ISAMETRIC</span>
+                </div>
+                <p>Visametric is the only service provider authorised by the <br>Embassy of Italy in Iran to handle visa application support services.</p>
             </div>
-        </section>
+            <div class="country-settings">
+                <span>Apply for Visa to <span class="flag"><i class="fas fa-flag flag-italy"></i> Italy</span> | <span class="flag"><i class="fas fa-flag flag-uk"></i> English <i class="fas fa-caret-down"></i></span></span>
+                <span class="in-country">in <span class="country-name">Iran</span></span>
+            </div>
+        </div>
 
-        <section id="dashboard-layout" class="hidden">
-            <h2>Welcome, <span id="applicant-name"></span></h2>
-            <p>CEU Number: <span id="applicant-ceu"></span></p>
-            <button id="logout-btn" class="official-button">Logout</button>
+        <nav class="main-nav">
+            <ul>
+                <li class="red-bg"><a href="#">Home page</a></li>
+                <li class="red-bg"><a href="#">General Informations</a></li>
+                <li class="dark-bg selected"><a href="#">Visa Procedures</a></li>
+                <li class="red-bg"><a href="#">Additional Services</a></li>
+                <li class="red-bg"><a href="#">F.A.Q</a></li>
+                <li class="red-bg"><a href="#">Contacts</a></li>
+            </ul>
+            <div class="search-section">
+                <input type="text" placeholder="Search" class="search-input">
+                <button class="search-button"><i class="fas fa-search"></i></button>
+                <div class="font-size-adjust">
+                    <span class="font-size-btn a-minus">A<sup>-</sup></span>
+                    <span class="font-size-btn a-normal">A</span>
+                    <span class="font-size-btn a-plus">A<sup>+</sup></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="breadcrumb">
+            <a href="#"><i class="fas fa-home"></i> Home page</a> &gt;
+            <a href="#">Visa Procedures</a> &gt;
+            <span>Track your application</span>
+        </div>
+
+        <div class="main-layout">
+            <aside class="sidebar">
+                <h2>Visa Procedures <i class="fas fa-angle-right"></i></h2>
+                <ul>
+                    <li><span class="bullet"></span>Schengen Visa Application Process</li>
+                    <li><span class="bullet"></span>National Visa Application Process</li>
+                    <li><span class="bullet"></span>Required Documents</li>
+                    <li><span class="bullet"></span>Application Form</li>
+                    <li><span class="bullet"></span>Book your appointment</li>
+                    <li><span class="bullet"></span>Edit your appointment</li>
+                    <li><span class="bullet"></span>Premium Lounge Application Procedure</li>
+                    <li class="selected-menu-item"><span class="bullet"></span>Track your application</li>
+                </ul>
+            </aside>
+
+            <section class="content-area">
+                <p class="tracking-intro">In order to track your application status, please enter your **Date of birth** and **Barcode number** here.</p>
+                <form class="tracking-form" id="tracking-form">
+                    <div class="form-group">
+                        <label for="dob">Date of birth (d/m/y) <i class="fas fa-question-circle"></i></label>
+                        <input type="text" id="dob" name="dob" placeholder="Optional: dd/mm/yyyy">
+                    </div>
+                    <div class="form-group">
+                        <label for="barcode">Barcode Number (8 digits) <i class="fas fa-question-circle"></i></label>
+                        <input type="text" id="barcode" name="barcode" required maxlength="8" minlength="8">
+                        <small id="barcode-error" style="color: #cc0000; font-size: 12px; margin-top: 5px; display: none;">Barcode is not valid or does not match our records.</small>
+                    </div>
+                    <div class="captcha-group">
+                        <div class="captcha-image" id="captcha-code">742734</div>
+                        <input type="text" id="captcha-input" placeholder="CONFIRM CODE (Optional)"> 
+                    </div>
+                    <button type="submit" class="search-app-btn" id="search-button" disabled>Search</button>
+                </form>
+            </section>
+        </div>
+
+        <section class="info-blocks">
+            <div class="block">
+                <div class="icon-circle"><i class="fas fa-file-invoice"></i></div>
+                <h3>Required Documents</h3>
+                <p>Prepare the required documents before your appointment.</p>
+            </div>
+            <div class="block">
+                <div class="icon-circle"><i class="fas fa-calendar-alt"></i></div>
+                <h3>Book an Appointment</h3>
+                <p>Book your appointment online for and come to the Visametric Visa Application Center on the designated day and time.</p>
+            </div>
+            <div class="announcements">
+                <h2>ANNOUNCEMENTS</h2>
+                <div class="announcement-item">Adjustment of VisoMetric Service Fees ...</div>
+                <button class="all-news-btn"><i class="fas fa-angle-right"></i> All news</button>
+            </div>
         </section>
     </main>
 
-    <script type="module" src="script.js"></script>
+    <footer>
+        <div class="footer-content-top">
+            <div class="footer-logo-info">
+                <div class="logo">
+                    <span class="logo-text-footer">V</span><span class="logo-text-small-footer">ISAMETRIC</span>
+                </div>
+                <p>Visametric is the only service provider authorised by the <br>Embassy of Italy in Iran to handle visa application support services.</p>
+            </div>
+            <div class="footer-links">
+                <div>
+                    <h3>Human Resources</h3>
+                    <div class="underline"></div>
+                </div>
+                <div>
+                    <h3>Human Resources</h3>
+                    <div class="underline"></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Copyright 2023 by VisoMetric. All rights reserved | **About VisoMetric** | **Security and Privacy Policy**</p>
+            <span class="footer-logo-initials">VS</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script> 
 </body>
 </html>
