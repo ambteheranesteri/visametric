@@ -53,15 +53,21 @@ document.addEventListener('DOMContentLoaded', () => {
     barcodeInput.addEventListener('input', updateSearchButtonState);
     // captchaInput.addEventListener('input', updateSearchButtonState); // حذف شد
 
-    // 5. مدیریت ارسال فرم برای هدایت به لینک مورد نظر
-    trackingForm.addEventListener('submit', (e) => {
+trackingForm.addEventListener('submit', (e) => {
         e.preventDefault(); 
         
         if (!searchButton.disabled) {
-            window.location.href = MOCK_DATA.redirect_link;
+            // ✅ این خط به جای هدایت اجرا می‌شود:
+            alert("کد جاوااسکریپت با موفقیت اجرا شد. بارکد معتبر است."); 
+            
+            // ❌ این خط را کامنت (غیرفعال) کنید
+            // window.location.href = MOCK_DATA.redirect_link; 
+        } else {
+             console.log("Cannot submit. Barcode is not in the database.");
         }
     });
 
     // اطمینان از غیرفعال بودن دکمه هنگام بارگذاری اولیه صفحه
     updateSearchButtonState();
 });
+
