@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="favicon.png" href="faviort.png">
     <title>Visa Application Tracking</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    
     <body style="transform: scale(1.25); transform-origin: top left; width: 80%;">
-
 
     <header>
         <div class="top-bar">
@@ -71,58 +70,46 @@
             </aside>
 
             <section class="content-area">
-                <p class="tracking-intro">In order to track your application status, please enter your Date of birth and CEU Number here.</p>
+                <p class="tracking-intro">In order to track your application status, please enter your **Date of birth** and **Passport No** here.</p>
                 <form class="tracking-form" id="tracking-form">
-<div class="form-group">
-    <label for="dob">Date of birth <i class="fas fa-question-circle"></i></label>
-    <input type="text" id="dob" name="dob" placeholder="dd/mm/yyyy"
-           style="width: 180px; padding: 6px; font-size: 14px; border-radius: 4px; border: 1px solid #ccc;">
-</div>
+                <div class="form-group">
+                     <label for="dob">Date of birth <i class="fas fa-question-circle"></i></label>
+                    <input type="text" id="dob" name="dob" placeholder="dd/mm/yyyy">
+                    </div>
 
-<div class="form-group">
-    <label for="barcode">Barcode Number (8 digits) <i class="fas fa-question-circle"></i></label>
-    <input type="text" id="barcode" name="barcode" required maxlength="8" minlength="8"
-           style="width: 180px; padding: 6px; font-size: 14px; border-radius: 4px; border: 1px solid #ccc;">
-    <small id="barcode-error" style="color: #cc0000; font-size: 12px; margin-top: 5px; display: none;">
-        Barcode is not valid or does not match our records.
-    </small>
-</div>
-
-<div class="captcha-group" style="margin-bottom: 15px;">
-    <div class="captcha-image" id="captcha-code"
-         style="width: 120px; padding: 6px 10px; font-size: 18px; border: 1px dashed #aaa; text-align: center; display: inline-block; margin-bottom: 10px;">
-        742734
+                    <div class="form-group">
+                        <label for="barcode">Passport No: <i class="fas fa-question-circle"></i></label>
+                        <input type="text" id="barcode" name="barcode" required maxlength="8" minlength="8">
+                        <small id="barcode-error" style="color: #cc0000; font-size: 12px; margin-top: 5px; display: none;">Barcode is not valid or does not match our records.</small>
+                    </div>
+                    <div class="captcha-group">
+    <div class="captcha-image" id="captcha-code" style="width:120px; padding:6px 10px; font-size:18px; border:1px dashed #aaa; text-align:center; display:inline-block; margin-bottom:10px;">
+        <!-- کد داینامیک -->
     </div>
-    <input type="text" id="captcha-input"
-           style="width: 180px; padding: 6px; font-size: 14px; border-radius: 4px; border: 1px solid #ccc;">
+    <input type="text" id="captcha-input" placeholder="CONFIRM CODE" style="width:180px; padding:6px; font-size:14px; border-radius:4px; border:1px solid #ccc;">
 </div>
+<button type="submit" class="search-app-btn" id="search-button" disabled>Search</button>
 
 <script>
 function generateCaptcha(length = 6) {
     let captcha = '';
-    const chars = '0123456789';
+    const chars = '0123456789'; // فقط اعداد، می‌توانید حروف هم اضافه کنید
     for (let i = 0; i < length; i++) {
         captcha += chars.charAt(Math.floor(Math.random() * chars.length));
     }
     return captcha;
 }
 
-// تغییر خودکار کپچا هر 5 ثانیه
-setInterval(function() {
-    document.getElementById('captcha-code').innerText = generateCaptcha();
-}, 5000);
+const captchaDiv = document.getElementById('captcha-code');
 
-// مقدار اولیه کپچا
-document.getElementById('captcha-code').innerText = generateCaptcha();
+// 1️⃣ تولید فوری کپچا هنگام بارگذاری صفحه
+captchaDiv.innerText = generateCaptcha();
+
+// 2️⃣ تغییر خودکار کپچا هر 60 ثانیه
+setInterval(() => {
+    captchaDiv.innerText = generateCaptcha();
+}, 60000); // 60000 میلی‌ثانیه = 60 ثانیه
 </script>
-
-
-<button type="submit" class="search-app-btn" id="search-button" disabled
-        style="width: 120px; padding: 6px 12px; font-size: 14px; border-radius: 4px; border: none; background-color: #6c7a89; color: white; cursor: pointer;">
-    Search
-</button>
-                </form>
-            </section>
         </div>
 
         <section class="info-blocks">
@@ -153,6 +140,14 @@ document.getElementById('captcha-code').innerText = generateCaptcha();
                 <p>Visametric is the only service provider authorised by the <br>Embassy of Italy in Iran to handle visa application support services.</p>
             </div>
             <div class="footer-links">
+                <div>
+                    <h3>Human Resources</h3>
+                    <div class="underline"></div>
+                </div>
+                <div>
+                    <h3>Human Resources</h3>
+                    <div class="underline"></div>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
@@ -164,3 +159,7 @@ document.getElementById('captcha-code').innerText = generateCaptcha();
     <script src="script.js"></script> 
 </body>
 </html>
+
+
+
+
