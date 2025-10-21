@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "74273411" 
         ],
         // لینک هدایت در صورت موفقیت
-        redirect_link: "https://visametric-iran.com/application-status/details"
+        redirect_link: "https://youtube.com"
     };
 
     // 2. انتخاب المان‌های مورد نیاز با استفاده از ID
@@ -29,7 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const barcodeValue = barcodeInput.value.trim();
         
         const isBarcodeValidFormat = barcodeValue.length === 8;
-        const isBarcodeInDatabase = MOCK_DATA.valid_barcodes.includes(barcodeValue);
+        
+        // ******* خط تصحیح‌شده *******
+        // مطمئن شوید که MOCK_DATA با MOCK_DATA که در بالا تعریف شده، مطابقت دارد.
+        const isBarcodeInDatabase = MOCK_DATA.valid_barcodes.includes(barcodeValue); 
+        // ***************************
         
         // منطق نمایش پیام خطا
         if (isBarcodeValidFormat && !isBarcodeInDatabase) {
@@ -39,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // فعال‌سازی دکمه
-        // دکمه فقط در صورتی فعال می‌شود که: بارکد مطابقت داشته باشد. (بررسی کپچا حذف شد)
         if (isBarcodeInDatabase) {
             searchButton.disabled = false;
             searchButton.style.backgroundColor = '#5f9087'; 
@@ -51,27 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. گوش دادن به تغییرات فیلد بارکد (فقط بارکد نیاز به نظارت دارد)
     barcodeInput.addEventListener('input', updateSearchButtonState);
-    // captchaInput.addEventListener('input', updateSearchButtonState); // حذف شد
 
-// در فایل script.js
-// ...
     // 5. مدیریت ارسال فرم برای هدایت به لینک مورد نظر
     trackingForm.addEventListener('submit', (e) => {
         e.preventDefault(); 
         
         if (!searchButton.disabled) {
-            // ✅ این خط را فعال کنید (باید تنها خط درون if باشد)
+            // هدایت به لینک خاص
             window.location.href = MOCK_DATA.redirect_link;
-            
-            // ❌ خط alert را حذف کنید یا کامنت بگذارید
-            // alert("کد جاوااسکریپت با موفقیت اجرا شد. بارکد معتبر است."); 
-            
         } else {
              console.log("Cannot submit. Barcode is not in the database.");
         }
     });
+
     // اطمینان از غیرفعال بودن دکمه هنگام بارگذاری اولیه صفحه
     updateSearchButtonState();
 });
-
-
